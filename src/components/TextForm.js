@@ -76,12 +76,17 @@ export default function TextForm(props) {
     const handleExtraSpaces=()=>{
         let newText=text.split(/[ ]+/);
         setText(newText.join(" "))
+        if(text!==""){
+            props.showAlert("Removed Extra spaces","success")
+        }else{
+            props.showAlert("Enter text to Remove Extra Spaces!","warning")
+        }
     }
     const handleOnChange=(event)=>{
         setText(event.target.value)
     }  
   return (
-<div  >
+<div className='container my-3'  >
 <div  >
     <h1 style={{color:props.mode==='dark'?'#A5C9CA':'black'}}>{props.heading}</h1>
     <div className="form-group">
@@ -89,17 +94,17 @@ export default function TextForm(props) {
     borderRadius:'30px'}} 
     className="form-control" value={text} id="myBox" rows="8" onChange={handleOnChange}></textarea>
     </div>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleUpClick}>UPPER CASE</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleLowClick}>lower case</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleCapCaseClick}>Capitalized Case</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleSCaseClick}>Sentence case</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleAltCaseClick}>ALtErNaTiNg CaSe</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleExtraSpaces}>Remove Extra Spaces</button>
-    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-3 mx-1`} onClick={handleClrClick}>Clear Text</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleUpClick}>UPPER CASE</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleLowClick}>lower case</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleCapCaseClick}>Capitalized Case</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleSCaseClick}>Sentence case</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleAltCaseClick}>ALtErNaTiNg CaSe</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+    <button  style={{color:props.mode==='dark'?'#A5C9CA':'black'}} className={`btn ${props.mode==="dark"?'btn-dark':'btn-light'} my-1 mx-1`} onClick={handleClrClick}>Clear Text</button>
 </div>
-<footer className="container my-3">
+<footer className="container ">
     <h1 style={{color:props.mode==='dark'?'#A5C9CA':'black'}}>TEXT SUMMARY</h1>
-    <p style={{color:props.mode==='dark'?'#A5C9CA':'black'}}>{text.split(" ").filter(function(n) { return n !== ''&& n !=='\n' }).length} word(s) and {text.split("").filter(function(n) { return n !== ' '&& n !== '\n' }).length}{" "}  
+    <p style={{color:props.mode==='dark'?'#A5C9CA':'black'}}>{text.split(/\s+/).filter(function(n) { return n !== ''&& n !=='\n' }).length} word(s) and {text.split("").filter(function(n) { return n !== ' '&& n !== '\n' }).length}{" "}  
     character(s) and {text.split("\n").filter(function(n) { return n !== '' }).length} line(s)</p>
 </footer>
 </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom';
 
 export default function Navbar(props) {
@@ -31,10 +30,3 @@ export default function Navbar(props) {
   )
 }
 
-Navbar.propTypes={
-    title: PropTypes.string
-}
-
-Navbar.defaultProps = {
-    title: 'Danish'
-  };

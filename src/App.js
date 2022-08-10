@@ -9,8 +9,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
+import Footer from './components/Footer';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -44,18 +44,17 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar title="Navbar"  mode={mode} toggleMode={toggleMode}  />
-      <div className="container my-3">
+      <Navbar title="Text Utils"  mode={mode} toggleMode={toggleMode}  />
+      <Alert alert= {alert} />
       <Switch>
             <Route path="/about">
-              <About/>
+              <About mode={mode} />
             </Route>
             <Route path="/">
               <TextForm showAlert={showAlert} heading ="ENTER YOUR TEXT:" mode={mode}/>
             </Route>
-      </Switch>      
-      <Alert alert= {alert} />
-      </div>
+      </Switch>  
+      <Footer mode={mode} />    
     </Router>
     </>
   );
